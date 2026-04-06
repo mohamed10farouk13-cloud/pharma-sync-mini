@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>PharmaSync Mini</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="manifest" href="manifest.json">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+<body class="bg-navy">
+    <div class="status-bar d-flex justify-content-between align-items-center px-3 py-2">
+            <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-flask text-accent"></i>i>
+                        <span class="fw-bold">PharmaSync Mini</span>span>
+            </div>div>
+            <div id="connectionStatus" class="status-dot online"></div>div>
+    </div>div>
+    <div class="container-fluid py-3 main-content">
+            <div class="glass-card p-3 mb-3 animate-in">
+                        <div class="search-box mb-2">
+                                        <i class="fas fa-search search-icon"></i>i>
+                                        <input type="text" id="itemSearch" class="form-control custom-input" placeholder="Search..." list="inventoryList">
+                                        <datalist id="inventoryList"></datalist>datalist>
+                        </div>div>
+                        <div id="selectedItemInfo" class="selected-info d-none mb-3 p-2 rounded">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                                      <h6 id="currentName" class="mb-0 text-white"></h6>h6>
+                                                                                      <small id="currentPrice" class="text-accent-light"></small>small>
+                                                            </div>
+                                                              <div class="qty-control d-flex align-items-center gap-2">
+                                                                                        <button class="btn-qty" id="decreaseQty">-</button>button>
+                                                                                        <span id="quantity" class="text-white fw-bold">1</span>span>
+                                                                                        <button class="btn-qty" id="increaseQty">+</button>button>
+                                                              </div>
+                                        </div>
+                                          <button class="btn btn-accent w-100 mt-2" id="addItemBtn">
+                                                                <i class="fas fa-plus me-1"></i>i> Add
+                                          </button>button>
+                        </div>
+            </div>
+              <div class="glass-card p-3 mb-3 animate-in" style="animation-delay: 0.1s;">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                              <h6 class="text-white-50 mb-0"><i class="fas fa-shopping-cart me-2"></i>i>Invoice</h6>h6>
+                                              <button class="btn btn-sm btn-outline-danger" id="clearCart">Clear</button>button>
+                            </div>
+                            <div id="cartItems" class="cart-scroll"></div>
+              </div>
+              <div class="fixed-bottom p-3 glass-header">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                              <span class="text-white-50">Total:</span>span>
+                                              <span id="totalDisplay" class="total-price h4 mb-0">0.00</span>span>
+                            </div>
+                            <button class="btn btn-primary w-100 py-3 btn-checkout" id="submitSale">
+                                              <span class="btn-text">Confirm</span>span>
+                                              <div class="spinner-border spinner-border-sm d-none" role="status"></div>
+                            </button>button>
+              </div>
+    </div>
+      <script src="app.js"></script>
+      <script>
+                if ('serviceWorker' in navigator) {
+                              navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+                }
+                  </script>
+</body>body>
+</html>html>
+      </script>
+                                                            </div></title>
+  </head>
