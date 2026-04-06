@@ -1,71 +1,65 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>PharmaSync Mini</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="manifest" href="manifest.json">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>PharmaSync Mini</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
   </head>
-<body class="bg-navy">
-    <div class="status-bar d-flex justify-content-between align-items-center px-3 py-2">
-            <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-flask text-accent"></i>i>
-                        <span class="fw-bold">PharmaSync Mini</span>span>
+<body class="bg-dark text-light p-3">
+  <div class="container-fluid" style="max-width: 500px; margin: auto;">
+      <header class="d-flex justify-content-between align-items-center mb-4 pt-2">
+            <div class="d-flex align-items-center">
+                    <i class="fas fa-flask text-info me-2 fs-4"></i>i>
+                    <h1 class="h5 mb-0 fw-bold">PharmaSync Mini</h1>h1>
             </div>div>
             <div id="connectionStatus" class="status-dot online"></div>div>
-    </div>div>
-    <div class="container-fluid py-3 main-content">
-            <div class="glass-card p-3 mb-3 animate-in">
-                        <div class="search-box mb-2">
-                                        <i class="fas fa-search search-icon"></i>i>
-                                        <input type="text" id="itemSearch" class="form-control custom-input" placeholder="Search..." list="inventoryList">
-                                        <datalist id="inventoryList"></datalist>datalist>
-                        </div>div>
-                        <div id="selectedItemInfo" class="selected-info d-none mb-3 p-2 rounded">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                                      <h6 id="currentName" class="mb-0 text-white"></h6>h6>
-                                                                                      <small id="currentPrice" class="text-accent-light"></small>small>
-                                                            </div>
-                                                              <div class="qty-control d-flex align-items-center gap-2">
-                                                                                        <button class="btn-qty" id="decreaseQty">-</button>button>
-                                                                                        <span id="quantity" class="text-white fw-bold">1</span>span>
-                                                                                        <button class="btn-qty" id="increaseQty">+</button>button>
-                                                              </div>
-                                        </div>
-                                          <button class="btn btn-accent w-100 mt-2" id="addItemBtn">
-                                                                <i class="fas fa-plus me-1"></i>i> Add
-                                          </button>button>
-                        </div>
+      </header>header>
+  
+      <div class="search-box mb-4">
+            <div class="input-group shadow-sm">
+                    <span class="input-group-text bg-dark border-info text-info"><i class="fas fa-search"></i>i></span>span>
+                    <input type="text" id="itemSearch" list="inventoryList" class="form-control bg-dark border-info text-white" placeholder="Search product...">
+                    <datalist id="inventoryList"></datalist>datalist>
+            </div>div>
+            <div id="selectedItemInfo" class="card bg-secondary mt-2 border-info d-none shadow">
+                    <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                              <div>
+                                            <div id="currentName" class="fw-bold text-white">Product Name</div>
+                                            <div id="currentPrice" class="small text-info">0.00 EGP</div>
+                              </div>
+                                <button id="addItemBtn" class="btn btn-info btn-sm rounded-circle"><i class="fas fa-plus"></i>i></button>button>
+                    </div>
             </div>
-              <div class="glass-card p-3 mb-3 animate-in" style="animation-delay: 0.1s;">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                              <h6 class="text-white-50 mb-0"><i class="fas fa-shopping-cart me-2"></i>i>Invoice</h6>h6>
-                                              <button class="btn btn-sm btn-outline-danger" id="clearCart">Clear</button>button>
-                            </div>
-                            <div id="cartItems" class="cart-scroll"></div>
+      </div>
+
+        <div class="cart-container mb-4">
+                <h2 class="h6 mb-3 text-info text-uppercase border-bottom border-info pb-2">Shopping Cart</h2>h2>
+                <div id="cartItems" class="mb-3" style="min-height: 120px;">
+                          <!-- Cart items via JS -->
+                </div>
+                <div class="total-bar p-3 rounded bg-info text-dark fw-bold d-flex justify-content-between align-items-center mb-3 shadow">
+                          <span>TOTAL:</span>
+                        <span class="fs-5"><span id="totalDisplay">0.00</span> EGP</span>
+                </div>
+              <div class="btn-group-vertical w-100 gap-2">
+                      <button id="submitSale" class="btn btn-info fw-bold py-3">SUBMIT SALE</button>button>
+                      <button id="clearCart" class="btn btn-sm text-danger border-0 bg-transparent">CLEAR CART</button>button>
               </div>
-              <div class="fixed-bottom p-3 glass-header">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                              <span class="text-white-50">Total:</span>span>
-                                              <span id="totalDisplay" class="total-price h4 mb-0">0.00</span>span>
-                            </div>
-                            <button class="btn btn-primary w-100 py-3 btn-checkout" id="submitSale">
-                                              <span class="btn-text">Confirm</span>span>
-                                              <div class="spinner-border spinner-border-sm d-none" role="status"></div>
-                            </button>button>
-              </div>
-    </div>
-      <script src="app.js"></script>
-      <script>
-                if ('serviceWorker' in navigator) {
-                              navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
-                }
-                  </script>
+        </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+        if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+        }
+          </script>
 </body>body>
 </html>html>
-      </script>
-                                                            </div></title>
-  </head>
+
+  </script></span
+                 
