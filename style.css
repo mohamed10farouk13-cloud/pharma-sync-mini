@@ -1,0 +1,99 @@
+:root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #38bdf8;
+      --accent-light: #7dd3fc;
+      --success: #10b981;
+      --danger: #ef4444;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --glass: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+}
+* {
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+}
+body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top right, #1e293b, #0f172a);
+      min-height: 100vh;
+      overflow-x: hidden;
+}
+.bg-navy { background-color: var(--primary); }
+.glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);glass-border) !important;
+      color: white !important;
+      border-radius: 12px;
+      padding: 12px 40px 12px 12px;
+}
+.search-box { position: relative; }
+.search-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+}
+.btn-qty {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+      background: var(--secondary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+.cart-scroll {
+      max-height: 300px;
+      overflow-y: auto;
+}
+.cart-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      padding: 10px;
+      animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+      from { transform: translateX(20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+}
+.total-price {
+      color: var(--accent);
+      font-weight: 800;
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+.btn-checkout {
+      background: var(--accent);
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+}
+.status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+}
+.online { background-color: var(--success); box-shadow: 0 0 10px var(--success); }
+.offline { background-color: var(--danger); }
+.animate-in {
+      animation: fadeIn 0.5s ease-out backwards;
+}
+@keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+}
+}
+.custom-input {
+      background: rgba(15, 23, 42, 0.6) !important;
+      border: 1px solid var(--
